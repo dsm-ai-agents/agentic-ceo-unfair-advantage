@@ -1,0 +1,678 @@
+{
+  "name": "0 AGENT CORE - COMMUNICATION - LESSON 2 MINDMAP - 1 JAN 2026",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d1ec352c-2e0e-47dc-acdf-c2c934466cdd",
+      "name": "When chat message received",
+      "webhookId": "e1a795e4-9cbe-4424-a803-a5aff6b8c951"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0c74d7e1-bcd5-4b99-9763-162a7c351fff",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        96,
+        208
+      ],
+      "id": "23d722af-d7b6-48d0-9458-f6e23f99a8b7",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Step 1 - Standalone Agent\n- Has an Internal Webhook\n- Respond to Message Node",
+        "height": 512,
+        "width": 912
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -112,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "80287cf5-f233-4a9f-a9c0-33c176e50807",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Step 2 - Telegram\n- Use this for all Testing Agents",
+        "height": 512,
+        "width": 816
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        816,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "992fb3a4-338b-4395-b3da-43174e2c4356",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        208
+      ],
+      "id": "5e8e87fa-c538-4277-bece-301868aa0bbf",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1104,
+        -16
+      ],
+      "id": "b1d0db42-aeb7-498c-8669-fbb8520aaf0b",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        912,
+        192
+      ],
+      "id": "2709d6ce-251c-4f21-9d18-51d0f072d018",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1088,
+        192
+      ],
+      "id": "57b094d7-7413-4cf1-9d07-0e259658fbd2",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        560,
+        0
+      ],
+      "id": "0ba63275-6153-4341-bbef-2608a80045c8",
+      "name": "Respond to Chat1"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        896,
+        -16
+      ],
+      "id": "fff94f7a-4c79-4a97-8f29-7fed814cd771",
+      "name": "Telegram Trigger",
+      "webhookId": "c096e1f4-ce60-4d77-9e1a-34ebfce0e5ae",
+      "credentials": {
+        "telegramApi": {
+          "id": "KflevW0etbKW3Uj0",
+          "name": "VAI Telegram Reporting Agent"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1424,
+        -16
+      ],
+      "id": "1020c982-46e0-4ca1-bc8b-0e23f6ee1f71",
+      "name": "Send a text message",
+      "webhookId": "2603ec4b-0f1d-4dd9-b514-5c70a48082a8",
+      "credentials": {
+        "telegramApi": {
+          "id": "KflevW0etbKW3Uj0",
+          "name": "VAI Telegram Reporting Agent"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Step 3 - Whatsapp \n- use this when you want to deploy your agent\n- additional difficulty",
+        "height": 512,
+        "width": 896
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1648,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "4c2a3e26-b9dd-41e7-bbbd-18aa8995068d",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        -16
+      ],
+      "id": "e642e3de-d15f-4597-8660-9e8b03bbaceb",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        208
+      ],
+      "id": "b18b298a-e243-4b8e-9874-dbfa9b2a94de",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2032,
+        208
+      ],
+      "id": "495bfd9a-8212-41cd-8672-d3a682fb2b21",
+      "name": "Simple Memory2"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        1728,
+        -16
+      ],
+      "id": "70729146-56a1-48b9-b630-03e24a419517",
+      "name": "WhatsApp Trigger",
+      "webhookId": "cbba883c-fff8-4314-bfee-8f279eec66e7",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "TK5lcXQFR8Fx908K",
+          "name": "KN Real number WhatsApp 3 oct 25"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        2304,
+        -16
+      ],
+      "id": "5479ba00-b9f6-417a-b473-94d7219bccb2",
+      "name": "Send message",
+      "webhookId": "9de7b3e8-e353-4d3c-b2e1-e657d074f4d3",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "GTOV8VSpchGG7wfQ",
+          "name": "KN real no. WhatsApp account 3rd oct"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Step 4 - Webhook for Connecting with Applications\n- Lovable Agent Builder",
+        "height": 512,
+        "width": 896
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2560,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "a7d91597-7955-4312-b004-09575cba177e",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2912,
+        -16
+      ],
+      "id": "c5a0e435-9c03-4d7c-8801-3b7364c8bea0",
+      "name": "AI Agent3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2704,
+        208
+      ],
+      "id": "988bffcf-94b1-4842-bd4c-14f1f7285e9d",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2944,
+        208
+      ],
+      "id": "96b8d85b-5e9b-46d3-9eab-1b4d96029040",
+      "name": "Simple Memory3"
+    },
+    {
+      "parameters": {
+        "path": "17e689ee-1097-4f4a-99fc-8045bd11500d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        2688,
+        -16
+      ],
+      "id": "78600361-3adc-4d87-ae65-adf796e14b04",
+      "name": "Webhook",
+      "webhookId": "17e689ee-1097-4f4a-99fc-8045bd11500d"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        3248,
+        -16
+      ],
+      "id": "cc310315-5873-4d8d-82a3-e4ff525cbcda",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTool",
+      "typeVersion": 1.2,
+      "position": [
+        1264,
+        192
+      ],
+      "id": "1ddb6f40-53fc-4ffb-8ac4-35b7ff1abeec",
+      "name": "Send a text message in Telegram",
+      "webhookId": "62dc2c58-11fb-4674-8ac9-372670b2ea36",
+      "credentials": {
+        "telegramApi": {
+          "id": "KflevW0etbKW3Uj0",
+          "name": "VAI Telegram Reporting Agent"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTool",
+      "typeVersion": 1,
+      "position": [
+        400,
+        208
+      ],
+      "id": "3971d055-4bba-41d1-bcf4-14078180a4d2",
+      "name": "Respond to Chat"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.whatsAppTool",
+      "typeVersion": 1.1,
+      "position": [
+        2208,
+        192
+      ],
+      "id": "1fd4d020-3e4e-47cc-90eb-93e249e77b60",
+      "name": "Send template in WhatsApp Business Cloud",
+      "webhookId": "bfe86ad3-3cfb-46ad-8274-360d1c02e3c5",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "GTOV8VSpchGG7wfQ",
+          "name": "KN real no. WhatsApp account 3rd oct"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3136,
+        208
+      ],
+      "id": "4df17ea5-0333-4ad7-9e8c-3cd7cc7695be",
+      "name": "Call n8n Workflow Tool"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory3": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message in Telegram": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Chat": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send template in WhatsApp Business Cloud": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d4f12863-af08-41b2-8f15-85109faf0158",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "78psaYC689zzIbm4",
+  "tags": []
+}
