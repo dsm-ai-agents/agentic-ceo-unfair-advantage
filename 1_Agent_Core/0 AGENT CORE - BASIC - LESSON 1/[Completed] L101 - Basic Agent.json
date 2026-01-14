@@ -1,0 +1,119 @@
+{
+  "name": "[Completed] L101 - Basic Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f0eada57-2d02-466a-a9dc-b0818d9b7d93",
+      "name": "When chat message received",
+      "webhookId": "476c2d38-3dfe-4f94-9208-6e7ff638b232"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "181ccb76-183b-4947-9c2d-342f9b19e2e8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        240,
+        208
+      ],
+      "id": "1bc76eb1-3569-40b9-b869-38676087a483",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### Basic Agent\nChat with an AI Model that is connected to an LLM - Google Gemini",
+        "height": 448,
+        "width": 816
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -144,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "2907cad1-0605-44ae-890c-b33c633ae2f6",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Sample Input:\n1) Hi my name is <Your name>\n\n2) What is my name?",
+        "height": 112,
+        "width": 272,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        16
+      ],
+      "typeVersion": 1,
+      "id": "d1fd922b-145b-48d1-bb64-7f3dd9d9f9a1",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "14dcb35e-c539-48af-a80a-7293e3e1d2b5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "tcqUhF749mHlMvrD",
+  "tags": []
+}

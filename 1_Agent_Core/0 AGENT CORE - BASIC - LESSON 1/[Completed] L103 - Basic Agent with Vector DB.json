@@ -1,0 +1,339 @@
+{
+  "name": "[Completed] L103 - Basic Agent with Vector DB",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "39d07294-891f-4cde-84c3-c9dd25b49be0",
+      "name": "When chat message received",
+      "webhookId": "fce75d79-9a33-4ee6-8f6c-7335051210d4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        0
+      ],
+      "id": "cec83e8f-ed71-476b-9dc9-25c5358556f5",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        192,
+        224
+      ],
+      "id": "5098dbb9-a4f7-4a82-ad15-2db8acf66256",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        224
+      ],
+      "id": "08e41a4e-fd80-463c-9ef6-3a93fc5e5e38",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Use this too to extract information about Data Science Masterminds. ",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        224
+      ],
+      "id": "1172f5e5-aae5-410e-b6c0-db713326774a",
+      "name": "Simple Vector Store"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        592,
+        400
+      ],
+      "id": "a6812839-e87b-419b-ac07-50cde6c1b569",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aaca80d1-f94f-44fd-b0f0-cde50fd5aa04",
+              "name": "Information",
+              "value": "🧠 About Data Science Masterminds (DSM) Data Science Masterminds (DSM) is a premium coaching and training company founded by Kunaal Naik, a Senior Data Scientist and Career Coach with 15+ years of industry and coaching experience. The mission of DSM is to create a million world-class, data-driven decision-makers and leaders by equipping professionals with practical data skills, real-world project experience, and strategic career guidance.  🧭 Mission & Vision Mission: Help individuals transition into data science or accelerate their careers using a proven, structured approach.   Vision: Build a global community of data-driven professionals who solve real business problems and make strategic decisions using data.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1088,
+        32
+      ],
+      "id": "5c0cb8cb-2d71-4155-9451-ca94b2e2a9de",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "value": "vector_store_key",
+          "mode": "list",
+          "cachedResultName": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1280,
+        32
+      ],
+      "id": "a233fe74-8476-4776-9e3a-42d56fad29c7",
+      "name": "Simple Vector Store1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        256
+      ],
+      "id": "44cfb52e-c38a-4fd7-a851-a32408e1c52f",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1472,
+        256
+      ],
+      "id": "57c3874a-eb3d-4b54-b258-01d815e1f9c5",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        32
+      ],
+      "id": "d5cb8e54-44b1-4448-8c0e-e4f7561a8f36",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "content": "### Agent with Vector store\nAgent can also use a vector database as a tool. You can add your own data to the vector database and the agent will give responses based on that data.",
+        "height": 656,
+        "width": 864
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "3edb28f4-e51a-479b-844f-243bc00f3dd5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Sample Input:\nTell me about Data Science Masterminds",
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -160,
+        192
+      ],
+      "typeVersion": 1,
+      "id": "29d2851f-5874-402f-ba4d-2897f960e5c5",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "### Adding data to the vector database\nUse the edit fields node to type in your own data and the embed the data into the vector store.\nThe vector store in both the workflows have to same key so they do not need to be connected using a connection.",
+        "height": 656,
+        "width": 864
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        816,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "ff1aeeb1-b093-4b15-aca1-d3ad7dba7f5e",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d53bd7e9-2607-49c6-b039-1c0347b70bf4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "UxcP4j61kSwnm1xN",
+  "tags": []
+}

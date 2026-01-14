@@ -1,0 +1,141 @@
+{
+  "name": "[Completed] L102- Basic Agent with Memory",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8d660917-2cc0-490c-9e4d-0d9f1ae54ccc",
+      "name": "When chat message received",
+      "webhookId": "7eeab0d9-25b3-4b35-8f87-44ae9b0243fb"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "bb8a539b-6351-4005-96b4-60df2e397100",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        128,
+        224
+      ],
+      "id": "fe7af1a8-0b2b-43ec-b5a2-3b4a5cfe89f5",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        288,
+        224
+      ],
+      "id": "b454c9f3-05ca-4d24-9b19-8cc3d178b1d1",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "content": "### Basic Agent with memory\nAdd a simple memory to the AI Agent",
+        "height": 448,
+        "width": 816
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -176,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "854296b0-c686-4178-9f59-5b3347f9897f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Sample Input:\n1) Hi my name is <Your name>\n\n2) What is my name?",
+        "height": 112,
+        "width": 272,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -320,
+        128
+      ],
+      "typeVersion": 1,
+      "id": "59411360-6536-4a26-bdb1-d501dad37cef",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "671fc626-fd6e-4c24-9efd-c145ba780383",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "6KnyY0lVbgk0ZcQY",
+  "tags": []
+}

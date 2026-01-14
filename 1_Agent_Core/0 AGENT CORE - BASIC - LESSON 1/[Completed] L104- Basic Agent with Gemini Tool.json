@@ -1,0 +1,374 @@
+{
+  "name": "[Completed] L104- Basic Agent with Gemini Tool",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "76f06110-6ef6-4d8d-989c-013139933b09",
+      "name": "When chat message received",
+      "webhookId": "89af774b-cf3d-425f-80c9-df04b750757a"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Use the Simple Vector store about Data Science when user asks about data Science Masterminds. If you don't have information say I do not have information. \nTodays data and time is : {{ $now }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        0
+      ],
+      "id": "d6a6b12c-3d5b-4777-afd8-85ddcfc6bcee",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        160,
+        224
+      ],
+      "id": "83993b68-e24a-4f3d-a8ff-9fad06166c8f",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        224
+      ],
+      "id": "613001ce-1477-42e1-ab57-ea56f43da9ae",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Use this too to extract information about Data Science Masterminds. ",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        224
+      ],
+      "id": "5e05aeed-aee7-4fa9-aaf0-0a749d393430",
+      "name": "Simple Vector Store"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        560,
+        432
+      ],
+      "id": "fa2c1627-429a-4a37-b1c1-fe03f1a14f40",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aaca80d1-f94f-44fd-b0f0-cde50fd5aa04",
+              "name": "Information",
+              "value": "🧠 About Data Science Masterminds (DSM) Data Science Masterminds (DSM) is a premium coaching and training company founded by Kunaal Naik, a Senior Data Scientist and Career Coach with 15+ years of industry and coaching experience. The mission of DSM is to create a million world-class, data-driven decision-makers and leaders by equipping professionals with practical data skills, real-world project experience, and strategic career guidance.  🧭 Mission & Vision Mission: Help individuals transition into data science or accelerate their careers using a proven, structured approach.   Vision: Build a global community of data-driven professionals who solve real business problems and make strategic decisions using data.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1008,
+        16
+      ],
+      "id": "dfb70196-b1f7-4c0c-8841-7f3d530f210c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "value": "vector_store_key",
+          "mode": "list",
+          "cachedResultName": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1200,
+        16
+      ],
+      "id": "0822e31f-3199-483d-ba6c-0cbb49b34e9b",
+      "name": "Simple Vector Store1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        240
+      ],
+      "id": "6ffbb802-fb96-4293-b19b-91b6e23148f8",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1344,
+        224
+      ],
+      "id": "697356fc-fdc7-46c0-8b09-261823dd5bca",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        832,
+        16
+      ],
+      "id": "63c19ed1-fe2f-4fa7-a10c-6fcbc40c41c5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "content": "### Adding data to the vector database\nUse the edit fields node to type in your own data and the embed the data into the vector store.\nThe vector store in both the workflows have to same key so they do not need to be connected using a connection.",
+        "height": 656,
+        "width": 864
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        752,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "4476ff6b-6157-4928-a35b-087cdcbaed86",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "### Agent with prompt\nAdd custom instructions to the AI Agent to get a better response",
+        "height": 656,
+        "width": 864
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -128,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "c5305855-d42c-4f1e-836f-54c8d79df610",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Sample Input:\nTell me about Data Science Masterminds",
+        "height": 96,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -240,
+        192
+      ],
+      "typeVersion": 1,
+      "id": "1d6b5262-9278-4c4a-af90-701d410b2610",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Query', ``, 'string') }}",
+        "enableUrlContext": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Enable_URL_Context_Tool', ``, 'boolean') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-gemini-search.geminiSearchToolTool",
+      "typeVersion": 1,
+      "position": [
+        384,
+        448
+      ],
+      "id": "7a25842e-bafc-49ed-9943-854ef2e2ef10",
+      "name": "Gemini Search Tool",
+      "credentials": {
+        "geminiSearchApi": {
+          "id": "RegxuZx6hiJ9HU6j",
+          "name": "Arpan Gemini"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Search Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "3284f049-4764-42cb-9620-d1ff7fc5d079",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "1aNMxPOZG4pfZQKb",
+  "tags": []
+}
