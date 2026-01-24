@@ -1,0 +1,85 @@
+{
+  "name": "[Template] Agent Data L305 - Remove Duplicates",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 3.5 - Data Transformation - Remove Duplicates",
+        "height": 272,
+        "width": 944
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "92a153a0-c078-460e-87ae-714fc70ea6b8",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        16
+      ],
+      "id": "087c3321-bef7-405a-b701-1e12a4398319",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        48,
+        16
+      ],
+      "id": "dd478029-56ca-485c-9b7e-d169ef7f15ee",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "a3f4bd5e-d014-42cb-ad27-cd6adb321820",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "ncw9gVKieNDpPmJl",
+  "tags": []
+}

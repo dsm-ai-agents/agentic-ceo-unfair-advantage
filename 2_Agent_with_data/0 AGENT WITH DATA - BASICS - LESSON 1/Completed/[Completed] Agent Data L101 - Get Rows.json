@@ -1,0 +1,257 @@
+{
+  "name": "[Completed] Agent Data L101 - Get Rows",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7ac24397-5f12-478a-992d-373a3295c66d",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        640,
+        0
+      ],
+      "id": "162c3d9b-3609-42e2-a933-3c8c8314ad08",
+      "name": "When chat message received",
+      "webhookId": "59b91a73-b3a9-4dac-a9a0-bf53ae238808"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        768,
+        224
+      ],
+      "id": "d7bcf58e-c9e2-4c5e-adaa-85ab95a791be",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1152,
+        208
+      ],
+      "id": "f9d2efba-ee30-4866-8e5a-495358ac4c0f",
+      "name": "Leads Database",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.1 - Store Data - Getting a row/s",
+        "height": 496,
+        "width": 704
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -160,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "4b00b4d5-75be-4a35-a345-8daebb0cd476",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e20c65e8-8748-41c4-ab79-c2147801ebb5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        928,
+        224
+      ],
+      "id": "217cdbb6-df16-436d-9a24-948966e75b88",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.1 - Store Data - Getting a row/s using AI Agent\n",
+        "height": 496,
+        "width": 1008
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        560,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "dbd51f7f-dd70-425f-8412-95547a9476d9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet and ask the user for the missing values so that the data added in the sheet is correct. Use get rows to undestand which row is to be deleted when prompted by the user. "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        864,
+        0
+      ],
+      "id": "98c07d81-3278-4e02-b4de-282c61a9bedf",
+      "name": "CRM Agent"
+    },
+    {
+      "parameters": {
+        "content": "### System Prompt\nYou are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet and and then as per the user's request, create or update the row or rows.",
+        "height": 192,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1296,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "0647c8ef-740c-4cd2-b530-dc92acadd491",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leads Database": {
+      "ai_tool": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "c83854d7-39d2-43c5-a828-a22cc7005613",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "qgw7LadgWXk_1Ndi-X7R4",
+  "tags": []
+}

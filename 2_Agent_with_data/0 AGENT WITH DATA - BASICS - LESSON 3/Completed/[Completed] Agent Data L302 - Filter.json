@@ -1,0 +1,239 @@
+{
+  "name": "[Completed] Agent Data L302 - Filter",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 3.2 - Data Transformation - Filter",
+        "height": 272,
+        "width": 912
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "9776c7e1-ecb2-4ad5-8e5f-d3166ed4e140",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        16
+      ],
+      "id": "70911848-8ac2-4a01-af3f-3be05141350c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1025130370,
+          "mode": "list",
+          "cachedResultName": "Hot Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=1025130370"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "={{ $json['Customer Name'] }}",
+            "Phone": "={{ $json.Phone }}",
+            "Email": "={{ $json.Email }}",
+            "Location": "={{ $json.Location }}",
+            "Lead Status": "={{ $json['Lead Status'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        512,
+        16
+      ],
+      "id": "a2da7de6-1467-44c3-84c1-ebfdd58ab3ac",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        64,
+        16
+      ],
+      "id": "7e82bcea-948b-4eba-8c95-6ad696d64827",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "655edbd1-e69e-42d7-82d0-e310b40b4f82",
+              "leftValue": "={{ $json['Lead Status'] }}",
+              "rightValue": "Hot",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        288,
+        16
+      ],
+      "id": "eb93537e-b211-406a-aa8c-3353188bec09",
+      "name": "Filter"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "46f89137-a799-4202-adb4-be4a37c1ac02",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "D7QknIH9SlEMwsqg",
+  "tags": []
+}

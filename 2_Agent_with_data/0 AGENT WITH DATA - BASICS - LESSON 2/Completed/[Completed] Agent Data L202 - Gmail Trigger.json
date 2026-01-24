@@ -1,0 +1,60 @@
+{
+  "name": "[Completed] Agent Data L202 - Gmail Trigger",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 2.2 - Capture - Gmail Trigger",
+        "height": 256,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "babb0013-2e08-4e38-b908-015d50e0af05",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "91edd655-5a36-40e2-841d-bd8035ab9daa",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IPuz32jePqkJOow1",
+          "name": "KN DSM Company Gmail - 1SEP2025"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "acbff969-0185-4c47-8bd7-d323e4d5178b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "G8wif3tBOiAGYTv7",
+  "tags": []
+}

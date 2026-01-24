@@ -1,0 +1,144 @@
+{
+  "name": "[Template] Agent Data L301 - Edit Fields",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 3.1 - Data Transformation - Edit Fields",
+        "height": 256,
+        "width": 720
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "de6a4ad1-973f-4c97-9091-2326997482bc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        16
+      ],
+      "id": "3643c152-d4ab-4ee8-bb77-ce62a024dd9e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7959aa92-b3e2-4aaa-b86f-c0fc28d1e5a7",
+              "name": "Customer Name",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "b4fad6bb-4d74-4ddb-9a8d-1300800d201f",
+              "name": "Phone",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a1f8b65f-dbd8-4a88-a9f1-2a61a91dd88a",
+              "name": "Email",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "16eea88d-7a20-4ba9-94b2-c80e03166a8f",
+              "name": "Location",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "ce064ccd-5ea8-478a-8f58-7237d570b96d",
+              "name": "Lead Status",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        16
+      ],
+      "id": "e55348cc-1a18-4441-908a-ee2ae2d852b8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        272,
+        16
+      ],
+      "id": "70d31f72-ae4b-4875-97ca-58644cd4ef64",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "714fccc7-ce67-4f32-9e77-1bc7bec99f26",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "9IvV8h6OpSflA4qa",
+  "tags": []
+}

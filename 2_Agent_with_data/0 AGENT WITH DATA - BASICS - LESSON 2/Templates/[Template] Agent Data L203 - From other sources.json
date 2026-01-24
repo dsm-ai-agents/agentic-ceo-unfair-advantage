@@ -1,0 +1,105 @@
+{
+  "name": "[Template] Agent Data L203 - From other sources",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 2.3 - Capture - Data from a stocks website",
+        "height": 256,
+        "width": 512
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "2af68865-f2e7-43e8-be0c-9549621cf992",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -144,
+        16
+      ],
+      "id": "3709cb33-dbc0-421e-b432-0a3b6777b345",
+      "name": "When chat message received",
+      "webhookId": "f3c6cf9a-1734-41d2-9e83-787586b16a5b"
+    },
+    {
+      "parameters": {
+        "url": "https://finnhub.io/api/v1/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.chatInput }}"
+            },
+            {
+              "name": "token",
+              "value": "d5en2n1r01qmi0sjnlj0d5en2n1r01qmi0sjnljg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        96,
+        16
+      ],
+      "id": "d880ea1f-e621-4a2e-a5d0-d97001c2d170",
+      "name": "Ticker Fetcher"
+    },
+    {
+      "parameters": {
+        "content": "### Sample Input - Nvidia",
+        "height": 80,
+        "width": 288,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -512,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "97f02808-6c1b-4c61-9b49-e65ec7db8a4d",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Ticker Fetcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "8cd908f1-98e3-4026-8366-6885066b4685",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "Jqzl7sHcuRoTKzEb",
+  "tags": []
+}

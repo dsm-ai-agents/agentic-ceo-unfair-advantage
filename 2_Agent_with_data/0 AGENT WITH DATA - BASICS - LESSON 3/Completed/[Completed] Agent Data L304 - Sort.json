@@ -1,0 +1,226 @@
+{
+  "name": "[Completed] Agent Data L304 - Sort",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 3.4 - Data Transformation - Sort",
+        "height": 272,
+        "width": 944
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "551e587e-4c59-4a44-ae8d-eb34a6e004ff",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        16
+      ],
+      "id": "1bfa362c-376e-4df1-adb5-0bb8d39c4b66",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 628077243,
+          "mode": "list",
+          "cachedResultName": "Database - sorted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=628077243"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "={{ $json['Customer Name'] }}",
+            "Phone": "={{ $json.Phone }}",
+            "Email": "={{ $json.Email }}",
+            "Location": "={{ $json.Location }}",
+            "Lead Status": "={{ $json['Lead Status'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        16
+      ],
+      "id": "b85d831f-73eb-4e70-8cc8-a2609bc4a6ca",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        64,
+        16
+      ],
+      "id": "5460b121-a0c6-43ce-9b99-81e550011fdf",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Customer Name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        272,
+        16
+      ],
+      "id": "a5eb41e9-9407-4ea4-b3f7-e4b1ebf069bc",
+      "name": "Sort"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "90b0261e-ab70-4aff-96f6-cd9ba6a27b45",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "Mhj9e61dDy9ZlcrO",
+  "tags": []
+}

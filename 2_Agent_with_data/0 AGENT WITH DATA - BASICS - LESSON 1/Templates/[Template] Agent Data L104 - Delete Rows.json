@@ -1,0 +1,623 @@
+{
+  "name": "[Template] Agent Data L104 - Delete Rows",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        640,
+        0
+      ],
+      "id": "53b35ed0-2582-44ac-ac1d-8abd9776aae6",
+      "name": "When chat message received",
+      "webhookId": "25464e5d-586b-4882-bc4d-5451b0f5588d"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        768,
+        224
+      ],
+      "id": "0cc61573-54ff-4bfb-ae79-bd8514444020",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        208
+      ],
+      "id": "49cbf6e4-a6b3-4652-8898-c0638c176f14",
+      "name": "Leads Database",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.4 - Store Data - Create a row",
+        "height": 544,
+        "width": 704
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -160,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "957e3fc8-839b-42b2-a1e7-a266ad1ac5d5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "00363411-4a86-4a42-803e-ea216d062e7f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        928,
+        224
+      ],
+      "id": "1a4bf20c-bd60-4e8e-bbca-841a25196e16",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.4 - Store Data - Create a row using AI Agent",
+        "height": 544,
+        "width": 1552
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        560,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "3507c257-83f1-440d-a11f-8eb21efd6cf2",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Customer_Name', ``, 'string') }}",
+            "Phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phone', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Location": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Location', ``, 'string') }}",
+            "Lead Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Lead_Status', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1184,
+        208
+      ],
+      "id": "c3a23fd4-0b5e-40b9-aca1-1570743ec039",
+      "name": "Add New Customer",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet and ask the user for the missing values so that the data added in the sheet is correct. Use get rows to undestand which row is to be deleted when prompted by the user. "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        864,
+        0
+      ],
+      "id": "1e9f80cf-2baa-4275-b1a2-237d19e7460f",
+      "name": "CRM Agent"
+    },
+    {
+      "parameters": {
+        "content": "### System Prompt\nYou are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet then as per the instructions of the user, add, delete or update the row or column using the google sheets tool attached.",
+        "height": 240,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1840,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "69858b2a-42f4-42b6-8929-ae217eb5c229",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Customer_Name__using_to_match_', ``, 'string') }}",
+            "Phone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phone', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Location": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Location', ``, 'string') }}",
+            "Lead Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Lead_Status', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Customer Name"
+          ],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1504,
+        208
+      ],
+      "id": "038443ef-316d-4858-97d9-f3fd0be6daa3",
+      "name": "Update row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54a89d2b-3180-4a03-8196-61115d51b60a",
+              "name": "Start Row number",
+              "value": null,
+              "type": "number"
+            },
+            {
+              "id": "e00e308b-31c7-4cc0-900a-035e23b2be0e",
+              "name": "Number of rows to delete",
+              "value": null,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        0
+      ],
+      "id": "ca07a9c4-e103-44e4-bda1-3f160c2542ed",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "content": "## Deleting Rows",
+        "height": 240,
+        "width": 656,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -144,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "5ea52eae-0123-456d-abc9-95cd4d68afd6",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54a89d2b-3180-4a03-8196-61115d51b60a",
+              "name": "Start Column number",
+              "value": 10,
+              "type": "number"
+            },
+            {
+              "id": "e00e308b-31c7-4cc0-900a-035e23b2be0e",
+              "name": "Number of columns to delete",
+              "value": 1,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        240
+      ],
+      "id": "fe8b2742-be7d-4716-9a95-7a01d68d75f9",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "content": "## Deleting Columns",
+        "height": 224,
+        "width": 656,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -144,
+        192
+      ],
+      "typeVersion": 1,
+      "id": "c4a858a9-2652-4c83-b1d3-3ace757708a4",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        0
+      ],
+      "id": "77093f4c-7a88-4be7-8ab8-f3e4dd668922",
+      "name": "Delete rows or columns from sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        240
+      ],
+      "id": "0cf1cbdc-a8c9-4cf0-86f6-bc1c7c5a20fe",
+      "name": "Delete rows or columns from sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leads Database": {
+      "ai_tool": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add New Customer": {
+      "ai_tool": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Delete rows or columns from sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Delete rows or columns from sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "f55edb77-e495-416c-a284-943ad36fd345",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "YUcHckt89oks5zDi",
+  "tags": []
+}

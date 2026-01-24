@@ -1,0 +1,91 @@
+{
+  "name": "[Completed] Agent Data L201 - Form Trigger",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 2.1 - Capture - Form Trigger",
+        "height": 256,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "d5f97f38-ae78-4335-b42f-e6a5314db46e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "formTitle": "CRM Data",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Customer Name",
+              "fieldLabel": "What is the name of the customer?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Phone Number",
+              "fieldLabel": "What is the phone number?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Email",
+              "fieldLabel": "What is the email?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Location",
+              "fieldLabel": "What is the location?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Lead Status",
+              "fieldLabel": "What is the lead status?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Hot"
+                  },
+                  {
+                    "option": "Warm"
+                  },
+                  {
+                    "option": "Cold"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -48,
+        16
+      ],
+      "id": "811d5465-4cc6-4e44-9601-6ce9142c7c62",
+      "name": "On form submission",
+      "webhookId": "63458780-7499-42de-a2a6-1e6c6c60e064"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "6561c5b0-e09b-4f4b-bfff-ef763bd39cec",
+  "meta": {
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "6az-CnJ4Y6KcD8GAzReCK",
+  "tags": []
+}

@@ -1,0 +1,277 @@
+{
+  "name": "[Template] Agent Data L102 - Create Rows",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        640,
+        0
+      ],
+      "id": "5a2cc6b0-54a6-4245-8d89-ec3c9c031606",
+      "name": "When chat message received",
+      "webhookId": "fa65a8df-efa1-4c29-8fae-59e59f321394"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        768,
+        224
+      ],
+      "id": "61f3bb5f-ece7-4878-8151-b797c7f93567",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1152,
+        208
+      ],
+      "id": "f7468553-fb07-4857-a814-45cf99b07fe7",
+      "name": "Leads Database",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.2 - Store Data - Create a row",
+        "height": 496,
+        "width": 704
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -160,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "b8a37f71-411e-4e89-a6fd-01147fcc5750",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "3d72a7f4-1ccd-4e47-a7ca-d63222283545",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        928,
+        224
+      ],
+      "id": "83bb8c47-1e18-4aae-a84c-672a99a9189c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 1.2 - Store Data - Create a row using AI Agent",
+        "height": 496,
+        "width": 1264
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        560,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "b0d90f77-d8f3-44a0-95b6-0306181a28a8",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet and ask the user for the missing values so that the data added in the sheet is correct. Use get rows to undestand which row is to be deleted when prompted by the user. "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        864,
+        0
+      ],
+      "id": "723f44fd-8ae5-4088-a008-46b29568ff6f",
+      "name": "CRM Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        0
+      ],
+      "id": "62c16ab0-65b8-4662-877e-2c1b1f0e92a7",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        288,
+        0
+      ],
+      "id": "b93c6743-2562-4230-af09-ec7be377908f",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### System Prompt\nYou are a CRM Agent. Use the google sheets tool to create a row when prompted by the user. Always get rows first to understand the column names in the sheet and and then as per the user's request, create or update the row or rows.",
+        "height": 192,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1552,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "8350f4bd-69d1-4db8-abc2-957d3fa9e4ea",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leads Database": {
+      "ai_tool": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "CRM Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "1991d611-7ab4-4451-ac55-776a47d99168",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "FLdGcxu05iVw2ie7",
+  "tags": []
+}

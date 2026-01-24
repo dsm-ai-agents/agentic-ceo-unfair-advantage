@@ -1,0 +1,47 @@
+{
+  "name": "[Template] Agent Data L201 - Form Trigger",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 2.1 - Capture - Form Trigger",
+        "height": 256,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "c25ed68c-97d5-4d10-bc30-b52a822ce063",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -48,
+        16
+      ],
+      "id": "93dfa15f-16d8-4057-8625-7951bfde4a7e",
+      "name": "On form submission",
+      "webhookId": "6060102b-80d3-46d5-9907-152d5828674a"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "34d2acf7-e16a-4aa3-9011-d3413a12e452",
+  "meta": {
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "BoISMRVZjtv9X05i",
+  "tags": []
+}

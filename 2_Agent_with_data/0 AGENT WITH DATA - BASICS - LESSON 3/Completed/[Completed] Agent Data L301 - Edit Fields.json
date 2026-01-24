@@ -1,0 +1,157 @@
+{
+  "name": "[Completed] Agent Data L301 - Edit Fields",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 3.1 - Data Transformation - Edit Fields",
+        "height": 256,
+        "width": 720
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "859e7752-4eb1-4047-90bb-ec0914a25677",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        16
+      ],
+      "id": "69f583ad-c128-4331-ae36-963fd8ed0d00",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7959aa92-b3e2-4aaa-b86f-c0fc28d1e5a7",
+              "name": "Customer Name",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "b4fad6bb-4d74-4ddb-9a8d-1300800d201f",
+              "name": "Phone",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a1f8b65f-dbd8-4a88-a9f1-2a61a91dd88a",
+              "name": "Email",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "16eea88d-7a20-4ba9-94b2-c80e03166a8f",
+              "name": "Location",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "ce064ccd-5ea8-478a-8f58-7237d570b96d",
+              "name": "Lead Status",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        16
+      ],
+      "id": "cbe9ffd0-a358-4e16-8cee-b0deedd0d42b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw",
+          "mode": "list",
+          "cachedResultName": "AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 790059189,
+          "mode": "list",
+          "cachedResultName": "Blank Sheet - Edit Fields",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksJMI5OPiLWCyGlGdEdzI8HNYafUfWtUcSl80Y0cbbw/edit#gid=790059189"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        272,
+        16
+      ],
+      "id": "a5918c6b-9a7d-4be6-af81-01f3dfd88ad7",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "63375281-cee0-43ba-b5b8-84b33e2227b1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "a7iaOKq4fyerkc9K",
+  "tags": []
+}

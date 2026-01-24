@@ -1,0 +1,1080 @@
+{
+  "name": "20260121 - Data Analysis MINDMAP",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Lesson 1 - CRUD\n1) Store Data - Create a row\n2) Get Data - Read a row/s\n2) Store Data - Update a row\n4) Delete Data - Delete a row",
+        "height": 576,
+        "width": 672
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1344,
+        -432
+      ],
+      "typeVersion": 1,
+      "id": "e728e591-1019-4266-aa00-2e51867a133b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 2 - Capture\n1) Form Trigger - Store\n2) Gmail Trigger - Store\n3) API Trigger - Store",
+        "height": 576,
+        "width": 592
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -656,
+        -432
+      ],
+      "typeVersion": 1,
+      "id": "6723aadd-ae4f-407a-a184-c96195c1eab3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 3 - Data Transformation\n1) N8N transformation with Sort\n",
+        "height": 576,
+        "width": 1184
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        -432
+      ],
+      "typeVersion": 1,
+      "id": "b83be50e-fcbc-4a20-88a0-03023e2f6934",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 4 - Data Conversion\n1) Extract from File & Store in Table/Vec Db - all variations\n2) Convert file to Json",
+        "height": 720,
+        "width": 672
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1344,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "becb991b-eb1e-4d88-acf2-3e264f2be662",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Lesson 5: Analytics\n1) Supabase Setup - Upload Data\n2) Agentic Analyst - Run a Query\n3) Agentic Analyst - Schema/Table/Query",
+        "height": 720,
+        "width": 1312
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -656,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "5351a9be-b0ac-4806-a463-bd18e82404c2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "John Doe",
+            "Phone": "+123212312"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -944,
+        -288
+      ],
+      "id": "deb1ca16-f22f-43ed-bf46-a90ccfbc1249",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "John Doe",
+            "Phone": "+123212312"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1184,
+        -64
+      ],
+      "id": "fa1a9629-98ee-48fc-b2fb-66fcf2ab414d",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "CRM Data",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Customer Name",
+              "fieldLabel": "What is the name of the customer?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Phone Number",
+              "fieldLabel": "What is the phone number?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Email",
+              "fieldLabel": "What is the email?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Location",
+              "fieldLabel": "What is the location?",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Lead Status",
+              "fieldLabel": "What is the lead status?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Hot"
+                  },
+                  {
+                    "option": "Warm"
+                  },
+                  {
+                    "option": "Cold"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -528,
+        -272
+      ],
+      "id": "f202a267-17bc-4461-ac3d-051a3d54c4f6",
+      "name": "On form submission",
+      "webhookId": "ccaddedf-4981-44ab-abe1-d429b8f26491"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        -272
+      ],
+      "id": "42b218b7-556e-4537-98f3-086f4a3fbf01",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IPuz32jePqkJOow1",
+          "name": "KN DSM Company Gmail - 1SEP2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Customer Name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -192
+      ],
+      "id": "68b29321-d9ea-4c6c-974c-8882c828be4c",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        16,
+        -192
+      ],
+      "id": "d9223250-cf65-4c82-a7ff-2a8d7cce73e5",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Customer Name": "John Doe",
+            "Phone": "+123212312"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Customer Name",
+              "displayName": "Customer Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Status",
+              "displayName": "Lead Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        944,
+        -192
+      ],
+      "id": "24069109-514a-4f4d-b599-1e6677602552",
+      "name": "Update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -528,
+        -80
+      ],
+      "id": "e85c89e6-e6b1-4561-8bab-ba340d3d927b",
+      "name": "When chat message received",
+      "webhookId": "82cc4096-0615-4380-98c9-038883160940"
+    },
+    {
+      "parameters": {
+        "url": "https://finnhub.io/api/v1/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.chatInput }}"
+            },
+            {
+              "name": "token",
+              "value": "d5en2n1r01qmi0sjnlj0d5en2n1r01qmi0sjnljg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -288,
+        -80
+      ],
+      "id": "ffcaaf6e-3c45-467c-9fe5-75a8101ad189",
+      "name": "Ticker Fetcher"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        304
+      ],
+      "id": "b1646395-0b4b-47b8-bfd7-c056d7d25abb",
+      "name": "Create a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "K5egAccSrB8X5a0u",
+          "name": "KN PROD SUPABASE 4JAN2026"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        304
+      ],
+      "id": "d442a048-61c8-4c9f-83ee-9bda4bb750cc",
+      "name": "Get many rows",
+      "credentials": {
+        "supabaseApi": {
+          "id": "K5egAccSrB8X5a0u",
+          "name": "KN PROD SUPABASE 4JAN2026"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        304
+      ],
+      "id": "2077ea1a-1c20-4913-be4a-96ea2cd87dab",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "K5egAccSrB8X5a0u",
+          "name": "KN PROD SUPABASE 4JAN2026"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        32,
+        304
+      ],
+      "id": "cb2e368e-84d4-446e-94ba-3077e6ddc90c",
+      "name": "Delete a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "K5egAccSrB8X5a0u",
+          "name": "KN PROD SUPABASE 4JAN2026"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1296,
+        304
+      ],
+      "id": "b20df2bd-15f5-456c-ab3b-f538f833d296",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "2VNnftp51BNWfxb2",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        304
+      ],
+      "id": "c2a472b6-4b47-4a6f-8cb3-a032b260ec23",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -848,
+        304
+      ],
+      "id": "610c2c2f-7a62-41dd-a6c6-1479e2c90be7",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -432,
+        480
+      ],
+      "id": "c0eb5c90-d3b5-4ddf-98c3-1ac9b7d34e9d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        704
+      ],
+      "id": "fe477186-de45-48fc-9cfd-5a04393064a5",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "O6SF0bLV6YzzpRJP",
+          "name": "KN GG - 23 DEC 2025"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -400,
+        704
+      ],
+      "id": "f907c82d-1a89-45b9-a9b5-3b9e47ab6ee6",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.6,
+      "position": [
+        -160,
+        688
+      ],
+      "id": "4abdd53b-7ee3-451d-8872-fac4e2d1f74c",
+      "name": "Execute a SQL query in Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "XE7WTkWiZS9oDP8K",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -928,
+        -64
+      ],
+      "id": "f1e811f2-5f82-4b1f-b37c-48d2729400e9",
+      "name": "Delete rows or columns from sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4",
+          "mode": "list",
+          "cachedResultName": "AIAAKS_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PHUlZU37Bxfn-sEjNhNPK56F_ueDo3AOXhF66V5ODX4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1168,
+        -288
+      ],
+      "id": "8a851c37-f2b2-4166-a156-c3928a357070",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ERR7nKGyBgaeMLc",
+          "name": "DSM PUBLIC- 18 NOV 2025"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        -352
+      ],
+      "id": "399a809e-0ce3-4401-9953-62ae49b032b4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f185728a-91ae-47ba-9066-7e6ddc84bc0d",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        496,
+        -352
+      ],
+      "id": "a3c5be63-f62f-4056-bf80-eaf83079c294",
+      "name": "Filter"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -352
+      ],
+      "id": "b7341f87-01ed-4f55-a653-b3b2ff47a921",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        496,
+        -192
+      ],
+      "id": "f8366079-b09d-46d9-ae8b-21caaa7326c5",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -192
+      ],
+      "id": "e08d81d6-c30f-4928-9f2c-acfb38e907da",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -32
+      ],
+      "id": "152f939e-86b0-4d7a-a179-6d9851a2b5a8",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        496,
+        -32
+      ],
+      "id": "3b852fe9-d22b-4ea6-9204-6080bae632f3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        -32
+      ],
+      "id": "fca5c480-7330-48fd-8159-4783be8a9197",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        512
+      ],
+      "id": "fcbdeace-bf65-4dfd-ba4b-66a3f7391a7c",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get row(s) in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "Sort": {
+      "main": [
+        []
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Ticker Fetcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete a row": {
+      "main": [
+        []
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query in Postgres": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet1": {
+      "main": [
+        []
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    },
+    "Limit": {
+      "main": [
+        []
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        []
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        []
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "b91273a3-5323-4e73-af7f-b20df002c327",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d85661857dfcd1207ce11ef23fab2db3d27371fb05cc9bce02662a3f60039047"
+  },
+  "id": "ZqdP3qVGCRk_M5t-IBS2B",
+  "tags": []
+}
