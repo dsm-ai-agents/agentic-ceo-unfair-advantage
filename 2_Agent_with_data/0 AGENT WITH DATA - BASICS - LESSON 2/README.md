@@ -1,97 +1,55 @@
-## Data Transformation and Flow Control
+## Lesson 2. Data Capture and Ingestion
 
-This workflow focuses on **how data moves, changes, and stabilizes** across an AI-driven system. The emphasis is not on automation complexity, but on understanding **data flow between n8n, AI agents, and Google Sheets**.
+This lesson focuses on **how data enters the system**.
 
-Think of this workflow as the operational backbone that supports intelligent systems.
-
----
-
-### Core Objective
-
-To teach how raw data is:
-- Captured from multiple entry points
-- Transformed step by step
-- Stored, updated, and analyzed
-- Safely consumed by an AI agent
-
-This is where systems either become reliable or break silently.
+Before data can be transformed, analyzed, or reasoned over by an AI agent, it must be captured reliably from the outside world. This lesson establishes the entry points of the system.
 
 ---
 
-### Key Learning Blocks
+### Objective of this Lesson
 
-#### 1. CRUD Operations (Data Persistence)
+To understand how different triggers introduce data into n8n and how that data is stored for downstream processing.
 
-This block establishes **data as a first-class entity**.
-
-- Create new rows
-- Read existing rows
-- Update records
-- Delete obsolete data
-
-Google Sheets is used as the operational data store to make these actions visible and intuitive.
+This is about **ingestion discipline**, not automation complexity.
 
 ---
 
-#### 2. Data Capture (Triggers)
+### What this lesson covers
 
-Multiple triggers introduce data into the system:
-- Form submissions
-- Email events
-- Chat messages
-- External API calls
+- **Form Trigger**  
+  Captures structured input directly from users.
 
-This shows that **input sources are interchangeable**, but downstream processing must remain consistent.
+- **Gmail Trigger**  
+  Ingests data from incoming emails and attachments.
 
----
+- **Chat Trigger**  
+  Accepts conversational input that can later be routed into workflows or agents.
 
-#### 3. Data Transformation
+- **HTTP Node**  
+  Allows external systems to push data into n8n programmatically.
 
-This is the heart of the workflow.
-
-- Edit Fields to reshape data
-- Filter to control flow
-- Sort and Limit to manage volume
-- Remove Duplicates to ensure integrity
-- Split, Merge, and Aggregate to restructure information
-- Summarize to convert raw data into insight
-
-Every transformation is explicit and traceable.
 
 ---
 
-#### 4. Data Conversion
+### Why this lesson matters
 
-This block demonstrates format-level control:
-- Extracting content from files
-- Converting data into structured formats
-- Preparing data for downstream systems
+If data enters inconsistently, everything downstream becomes unreliable.
 
-This reinforces that agents reason on **clean, structured inputs**, not raw files.
+This lesson teaches:
+- Controlled entry points
+- Clear ownership of incoming data
+- Separation between ingestion and processing
 
----
-
-#### 5. Analytics with AI Agent
-
-The AI agent consumes transformed data and:
-- Queries structured datasets
-- Runs analytical logic
-- Produces insights instead of raw output
-
-The agent does not replace data systems. It **sits on top of them**.
+Strong systems are built at the boundaries.
 
 ---
 
-### Mental Model to Keep in Mind
+### Mental model to keep in mind
 
-- n8n moves data
-- Google Sheets stores state
-- The AI agent reasons on prepared inputs
+- Triggers define **where data comes from**
+- n8n normalizes incoming data
+- Storage and transformation happen later
 
-If data is unclear, the agent will fail.  
-If data flow is clean, intelligence compounds.
-
----
+If ingestion is unclear, debugging becomes impossible.
 
 ---
-
