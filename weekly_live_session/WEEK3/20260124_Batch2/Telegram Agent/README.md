@@ -22,45 +22,31 @@
 
 # 
 
-# \### 1. Telegram Trigger
-
-# Listens for incoming messages from your Telegram bot
+# \*\*1. Telegram Trigger\*\* - Listens for incoming messages from your Telegram bot
 
 # 
 
-# \### 2. AI Agent
-
-# Processes messages, reasons about responses, and decides when to use tools
+# \*\*2. AI Agent\*\* - Processes messages, reasons about responses, and decides when to use tools
 
 # 
 
-# \### 3. Google Gemini Chat Model
-
-# Provides language understanding and generation capabilities
+# \*\*3. Google Gemini Chat Model\*\* - Provides language understanding and generation capabilities
 
 # 
 
-# \### 4. Simple Memory
-
-# Maintains conversation context during the chat session
+# \*\*4. Simple Memory\*\* - Maintains conversation context during the chat session
 
 # 
 
-# \### 5. Gemini Search Tool
-
-# Allows the agent to search for information when needed
+# \*\*5. Gemini Search Tool\*\* - Allows the agent to search for information when needed
 
 # 
 
-# \### 6. Date \& Time Tool
-
-# Provides current date and time information to the agent
+# \*\*6. Date \& Time Tool\*\* - Provides current date and time information to the agent
 
 # 
 
-# \### 7. Send a text message
-
-# Returns the agent's response back to the user via Telegram
+# \*\*7. Send a text message\*\* - Returns the agent's response back to the user via Telegram
 
 # 
 
@@ -110,7 +96,7 @@
 
 # ```
 
-# You are a helpful assistant. 
+# You are a helpful assistant.
 
 # Return a maximum of 3900 characters.
 
@@ -130,7 +116,7 @@
 
 # 
 
-# \### Tool-Augmented Responses
+# \*\*Tool-Augmented Responses:\*\*
 
 # 
 
@@ -146,7 +132,7 @@
 
 # 
 
-# \### Conversation Memory
+# \*\*Conversation Memory:\*\*
 
 # 
 
@@ -160,7 +146,7 @@
 
 # 
 
-# \### Platform Integration
+# \*\*Platform Integration:\*\*
 
 # 
 
@@ -182,7 +168,7 @@
 
 # 
 
-# \### Step 1: Message Reception
+# \*\*Step 1: Message Reception\*\*
 
 # 
 
@@ -190,7 +176,7 @@
 
 # 
 
-# \### Step 2: Agent Processing
+# \*\*Step 2: Agent Processing\*\*
 
 # 
 
@@ -206,7 +192,7 @@
 
 # 
 
-# \### Step 3: Tool Usage (Optional)
+# \*\*Step 3: Tool Usage (Optional)\*\*
 
 # 
 
@@ -222,7 +208,7 @@
 
 # 
 
-# \### Step 4: Response Delivery
+# \*\*Step 4: Response Delivery\*\*
 
 # 
 
@@ -294,21 +280,15 @@
 
 # 
 
-# \### Memory is Ephemeral
-
-# Conversation history only exists during active workflow execution. Restarting the workflow clears all context.
+# \*\*Memory is Ephemeral\*\* - Conversation history only exists during active workflow execution. Restarting the workflow clears all context.
 
 # 
 
-# \### No User Isolation
-
-# This basic setup doesn't separate conversations by user. For multi-user bots, implement session management.
+# \*\*No User Isolation\*\* - This basic setup doesn't separate conversations by user. For multi-user bots, implement session management.
 
 # 
 
-# \### Character Limit
-
-# Responses are capped at 3900 characters to fit Telegram constraints.
+# \*\*Character Limit\*\* - Responses are capped at 3900 characters to fit Telegram constraints.
 
 # 
 
