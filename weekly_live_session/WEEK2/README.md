@@ -1,4 +1,4 @@
-# \## RAG (Retrieval Augmented Generation) – Production-Ready Variant (MongoDB)
+# \# RAG (Retrieval Augmented Generation) – Production-Ready Variant (MongoDB)
 
 # 
 
@@ -30,31 +30,31 @@
 
 # 
 
-# 1\. \*\*AI Agent\*\*  
+# \### 1. AI Agent
 
-# &nbsp;  Handles reasoning and tool selection
-
-# 
-
-# 2\. \*\*MongoDB Chat Memory\*\*  
-
-# &nbsp;  Stores conversation history outside n8n for persistence and review
+# Handles reasoning and tool selection
 
 # 
 
-# 3\. \*\*MongoDB Atlas Vector Store\*\*  
+# \### 2. MongoDB Chat Memory
 
-# &nbsp;  Stores and retrieves embedded knowledge using semantic search
-
-# 
-
-# 4\. \*\*Embeddings Model\*\*  
-
-# &nbsp;  Converts text into vector representations
+# Stores conversation history outside n8n for persistence and review
 
 # 
 
-# The reasoning loop remains unchanged.  
+# \### 3. MongoDB Atlas Vector Store
+
+# Stores and retrieves embedded knowledge using semantic search
+
+# 
+
+# \### 4. Embeddings Model
+
+# Converts text into vector representations
+
+# 
+
+# The reasoning loop remains unchanged.
 
 # Only \*\*where data lives\*\* is upgraded.
 
@@ -126,7 +126,7 @@
 
 # 
 
-# If memory or knowledge disappears when a workflow stops,  
+# If memory or knowledge disappears when a workflow stops,
 
 # it is not production-ready.
 
@@ -302,7 +302,7 @@
 
 # 
 
-# Vector databases do not understand text.  
+# Vector databases do not understand text.
 
 # They understand vectors.
 
@@ -342,7 +342,7 @@
 
 # 
 
-# Nothing here is smarter than before.  
+# Nothing here is smarter than before.
 
 # It is simply \*\*more real\*\*.
 
@@ -370,7 +370,7 @@
 
 # 
 
-# If your agent only works during execution,  
+# If your agent only works during execution,
 
 # you are not building a system.
 
@@ -384,15 +384,13 @@
 
 # 
 
-# \- Conceptual RAG  
+# \- Conceptual RAG
 
-# \- Production-ready RAG  
+# \- Production-ready RAG
 
 # 
 
-# The difference is not intelligence.  
+# The difference is not intelligence.
 
 # The difference is \*\*architecture\*\*.
-
-# ---
 
