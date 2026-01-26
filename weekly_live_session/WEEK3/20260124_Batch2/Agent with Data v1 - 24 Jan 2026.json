@@ -1,0 +1,75 @@
+{
+  "name": "Agent with Data v1 - 24 Jan 2026",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "89a6ee82-7e10-4ed1-9f2f-7a8686164e7f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "11-VGgvwlUZ4_ehwwCiu9DXhiTTqO-NYVg8XKiMsTwxw",
+          "mode": "list",
+          "cachedResultName": "24 Jan AICEO_Agent_Data_Google_Sheets_CRUD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11-VGgvwlUZ4_ehwwCiu9DXhiTTqO-NYVg8XKiMsTwxw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11-VGgvwlUZ4_ehwwCiu9DXhiTTqO-NYVg8XKiMsTwxw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "355e0766-3283-478b-a045-00e0d7d88337",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EwmEcnRjwuetjCGA",
+          "name": "KN DSM Google Sheets - 8 JAN 2026"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "78f4209b-262d-4a19-aa37-aef1f6d090f2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "966c9717c649ff58138114ad4ec0792ba6c6dbbaefbc75a95d7e5ed34f041958"
+  },
+  "id": "j-YPWBzeKmHQYuFs02N5v",
+  "tags": []
+}
