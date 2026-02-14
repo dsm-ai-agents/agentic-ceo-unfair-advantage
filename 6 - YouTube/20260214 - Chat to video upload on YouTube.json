@@ -1,0 +1,469 @@
+{
+  "name": "20260214 - Chat to video upload on YouTube",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -752,
+        -96
+      ],
+      "id": "245af2e6-7a09-44ae-a1d5-87bb6fc56100",
+      "name": "When chat message received",
+      "webhookId": "c5dc60e7-fd1b-45e9-be44-4a6ee035293b"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are an expert AI video prompt engineer for Google's Veo 3.1. Transform user requests into optimized video generation prompts within 150 words max.\n\n## Essential Elements (Priority Order):\n1. **Subject**: Main focus (person, object, animal, scenery)\n2. **Action**: What's happening (specific verbs)\n3. **Style**: Creative direction (cinematic, sci-fi, cartoon, documentary)\n4. **Camera**: Position (aerial, close-up, eye-level) & motion (dolly, tracking, static, pan)\n5. **Composition**: Shot framing (wide shot, medium, close-up)\n6. **Ambiance**: Lighting, color tones, mood, time of day\n7. **Audio**: Dialogue in quotes, sound effects described explicitly, ambient noise\n\nalso generate the title of the video\n\n## Rules:\n- Be concise and specific\n- Use vivid adjectives efficiently\n- Front-load important details\n- Combine related elements\n- No filler words\n- Maximum impact, minimum words\n\nOutput only the optimized prompt and the title."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -480,
+        -96
+      ],
+      "id": "f75bb079-3159-4b63-8d59-66994ed0d0e3",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        144
+      ],
+      "id": "cc573521-1d6d-4ceb-a7e8-c6c9181e7953",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "iRiikErYVYL2GFKy",
+          "name": "arpan_gemini_paid_key"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -400,
+        144
+      ],
+      "id": "25ca81fe-0f2f-46af-8030-65654491c124",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"instances\": [\n    {\n      \"prompt\": \"{{ $json.output}}\"\n    }\n  ],\n  \"parameters\": {\n    \"aspectRatio\": \"16:9\",\n    \"resolution\": \"720p\",\n    \"durationSeconds\": 8\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -64,
+        -96
+      ],
+      "id": "a916d124-6f99-4c54-a40d-37b9983f9f88",
+      "name": "Video Generation Request"
+    },
+    {
+      "parameters": {
+        "url": "=https://generativelanguage.googleapis.com/v1beta/{{ $json.Value }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        592,
+        -80
+      ],
+      "id": "84681fc7-5cb0-407d-b52a-02a8b43b0ae7",
+      "name": "Video Generation Status check"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "689eb4db-6aa8-43de-8f2e-6c8b8f3716bd",
+              "leftValue": "={{ $json.done }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        816,
+        -160
+      ],
+      "id": "9b08ced2-cba6-48a9-8f9d-2dffe6857234",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        16
+      ],
+      "id": "f064242e-eb9e-4456-bc5f-512f118861b2",
+      "name": "Wait",
+      "webhookId": "fa40cbbe-27d6-4e79-9034-96cf2bdd98d6"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response.generateVideoResponse.generatedSamples[0].video.uri }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "generated_video.mp4"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1040,
+        -208
+      ],
+      "id": "b985e8c1-2b3e-473e-9183-5b7f30e55916",
+      "name": "Download Video"
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "generated_video.mp4",
+        "name": "={{ $('AI Agent').item.json.output.title }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1l3Nuwv0-NrtoqKDjM3Ux8SzdH-KEh6wL",
+          "mode": "list",
+          "cachedResultName": "Veo3 Videos",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1l3Nuwv0-NrtoqKDjM3Ux8SzdH-KEh6wL"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1264,
+        -304
+      ],
+      "id": "940792bd-63a7-4e94-9180-1271df56a166",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "VuTVGctvQs04Ebt7",
+          "name": "arpan_google_drive"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "={{ $('AI Agent').item.json.output.title }}",
+        "regionCode": "IN",
+        "categoryId": "1",
+        "binaryProperty": "generated_video.mp4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        -112
+      ],
+      "id": "90f9f8f1-a55e-4e30-89af-107b2b2cf53b",
+      "name": "Upload a video",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "l6HPJMNfjTTr3RWu",
+          "name": "ArpanYT-2026"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"title\": \"title of the video\",\n\t\"prompt\": \"prompt for the video\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -272,
+        144
+      ],
+      "id": "a3cc004d-73be-4d60-bd12-f04b283ce4ee",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        -96
+      ],
+      "id": "3dfb41fc-bfed-483d-9d7f-e7dd1ae81dbc",
+      "name": "Wait1",
+      "webhookId": "5d3f5902-e517-44e8-9dd3-739a5e066fd8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1843bbb6-bc8d-407e-898c-2277e49bdad4",
+              "name": "Name",
+              "value": "OperationName",
+              "type": "string"
+            },
+            {
+              "id": "bc2ff833-5749-47d6-8c56-fc416844ccee",
+              "name": "Value",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        -96
+      ],
+      "id": "1992b217-1175-45e6-84ff-e8bc132e8119",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Video Generation Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Generation Request": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Generation Status check": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Download Video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Video Generation Status check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Upload a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Video Generation Status check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "45430279-dc5f-48e7-b577-db11ea49e79e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "966c9717c649ff58138114ad4ec0792ba6c6dbbaefbc75a95d7e5ed34f041958"
+  },
+  "id": "CV8xO6w-eMZI10e1N54KZ",
+  "tags": []
+}
