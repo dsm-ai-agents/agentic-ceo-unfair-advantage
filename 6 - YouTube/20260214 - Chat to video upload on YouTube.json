@@ -69,8 +69,7 @@
         "headerParameters": {
           "parameters": [
             {
-              "name": "x-goog-api-key",
-              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+              "name": "x-goog-api-key"
             }
           ]
         },
@@ -95,8 +94,7 @@
         "headerParameters": {
           "parameters": [
             {
-              "name": "x-goog-api-key",
-              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+              "name": "x-goog-api-key"
             }
           ]
         },
@@ -165,8 +163,7 @@
         "headerParameters": {
           "parameters": [
             {
-              "name": "x-goog-api-key",
-              "value": "AIzaSyCBOnsBVOaZM64cfi7PkeVnnPC1MiK_Yfg"
+              "name": "x-goog-api-key"
             }
           ]
         },
@@ -459,7 +456,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "45430279-dc5f-48e7-b577-db11ea49e79e",
+  "versionId": "1e4958c6-7848-48b9-a57a-e530b9e22aab",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "966c9717c649ff58138114ad4ec0792ba6c6dbbaefbc75a95d7e5ed34f041958"
