@@ -1,54 +1,70 @@
-# Veo 3.1 → YouTube Auto Publisher (n8n + Gemini)
-
-> Fully automated AI video generation and YouTube publishing system.  
-> **User message → Gemini Agent → Optimized Veo Prompt → Video Generation → Status Polling → Download → YouTube Upload**
+# 🎬 Veo 3.1 AI Video Prompt Automation
+**n8n Workflow – Chat → Optimized Prompt → Video Generation → Drive + YouTube Upload**
 
 ---
 
-## 1. Problem
+## 📌 Overview
 
-Manually crafting video prompts, generating AI videos, downloading files, and uploading to YouTube is slow and repetitive. This workflow converts a simple chat message into a fully generated and published YouTube video — automatically.
+This workflow converts a simple chat message into a fully optimized Google Veo 3.1 video prompt, generates the video, then:
+
+- Uploads the generated file to Google Drive
+- Publishes the video to YouTube
+
+The AI Agent transforms vague user ideas into high-impact cinematic prompts under 150 words, following strict structure and formatting rules.
 
 ---
 
-## 2. System Architecture
+## 🧠 Architecture
 
 ```
 When Chat Message Received
-  → AI Agent (Gemini Chat)
-      → Simple Memory
-      → Structured Output Parser
-  → HTTP: Video Generation Request (Veo 3.1)
-  → Wait
-  → HTTP: Video Generation Status Check
-  → IF (Completed)
-      → true:  Download Video → Upload to YouTube / Upload to Drive
-      → false: Wait → Re-check Status (loop)
+        ↓
+AI Agent (Gemini Chat Model + Memory + Structured Output Parser)
+        ↓
+Generate Video (Veo 3.1)
+        ↓
+ ├── Upload File (Google Drive)
+ └── Upload Video (YouTube)
 ```
-
-The polling loop continues until the video status returns `done: true`.
 
 ---
 
-## 3. AI Agent System Prompt
+## 🔧 Node Breakdown
 
-Copy this directly into the **AI Agent** node:
+### 1️⃣ Trigger — When Chat Message Received
+
+- Accepts user input
+- Example:
+
+```
+A tiger walking through neon Tokyo at night
+```
+
+---
+
+### 2️⃣ AI Agent
+
+**Model:** Google Gemini Chat  
+**Memory:** Simple Memory  
+**Output Parser:** Structured Output Parser
+
+#### 🎯 System Prompt
 
 ```
 You are an expert AI video prompt engineer for Google's Veo 3.1. Transform user requests into optimized video generation prompts within 150 words max.
 
-Essential Elements (Priority Order):
-  Subject:     Main focus (person, object, animal, scenery)
-  Action:      What's happening (specific verbs)
-  Style:       Creative direction (cinematic, sci-fi, cartoon, documentary)
-  Camera:      Position (aerial, close-up, eye-level) and motion (dolly, tracking, static, pan)
-  Composition: Shot framing (wide shot, medium, close-up)
-  Ambiance:    Lighting, color tones, mood, time of day
-  Audio:       Dialogue in quotes, sound effects described explicitly, ambient noise
+## Essential Elements (Priority Order):
+1. Subject
+2. Action
+3. Style
+4. Camera
+5. Composition
+6. Ambiance
+7. Audio
 
 Also generate the title of the video.
 
-Rules:
+## Rules:
 - Be concise and specific
 - Use vivid adjectives efficiently
 - Front-load important details
@@ -56,18 +72,12 @@ Rules:
 - No filler words
 - Maximum impact, minimum words
 
-Output only valid JSON in this format:
-{
-  "title": "title of the video",
-  "prompt": "prompt for the video"
-}
+Output only the optimized prompt and the title.
 ```
 
----
+#### 🧾 Structured Output Parser
 
-## 4. Output Schema
-
-The Structured Output Parser should be configured with the following schema:
+Schema:
 
 ```json
 {
@@ -76,112 +86,96 @@ The Structured Output Parser should be configured with the following schema:
 }
 ```
 
----
-
-## 5. Veo 3.1 Video Generation
-
-**Endpoint**
-```
-POST https://generativelanguage.googleapis.com/v1beta/models/veo-3.1:generateVideo
-```
-
-**Required inputs:**
-- Gemini API Key
-- `prompt` — from the AI Agent output
-- `title` — from the AI Agent output
-
-The request returns a **job ID** used for status polling.
+This ensures the output is always machine-readable and directly usable by the Veo node.
 
 ---
 
-## 6. Status Polling Logic
+### 3️⃣ Generate a Video — Google Veo 3.1
 
-```
-1. Wait 10–20 seconds
-2. Check generation status via HTTP request
-3. If done = false → Wait again → Re-check
-4. If done = true  → Proceed to Download
-```
-
-The polling loop is handled by the **Wait → Status Check → IF** node chain.
+- Input: `{{$json.prompt}}`
+- Generates the final video file
+- Returns binary video output
 
 ---
 
-## 7. YouTube Upload
+### 4️⃣ Upload File — Google Drive
 
-**Requirement:** Enable the **YouTube Data API v3** in Google Cloud Console.
-
-**Authentication:** YouTube uses Google OAuth. The same Google Cloud project used for Gemini can be reused.
-
-**Required OAuth Scope:**
-```
-https://www.googleapis.com/auth/youtube.upload
-```
-
-**Video metadata:**
-- **Title** — from AI Agent output
-- **Description** — optional (configurable)
-- **Visibility** — configurable (`public`, `unlisted`, or `private`)
+- Stores the generated video file
+- Useful for archiving, repurposing, or editing
 
 ---
 
-## 8. Required Credentials
+### 5️⃣ Upload a Video — YouTube
 
-| Credential | Description |
-|---|---|
-| `GEMINI_API_KEY` | For the AI Agent and Veo 3.1 API calls |
-| Google OAuth | For YouTube upload and Google Drive |
-| YouTube Data API v3 | Must be enabled in Google Cloud Console |
+- Publishes directly to YouTube
+- Title: `{{$json.title}}`
+- Description: Can reuse `{{$json.prompt}}`
 
 ---
 
-## 9. Environment Variables
+## 🔑 Required Credentials
 
-```env
-GEMINI_API_KEY=
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+- Google Gemini API
+- Google Drive OAuth
+- YouTube Data API v3
+- Veo 3.1 access enabled
+
+---
+
+## 📥 Example Input
+
+**User message:**
+
+```
+A futuristic samurai fighting robots in the rain
+```
+
+**Agent Output:**
+
+```json
+{
+  "title": "Neon Ronin: Battle in the Rain",
+  "prompt": "A lone cybernetic samurai clashes with towering combat robots in a rain soaked neon alley..."
+}
 ```
 
 ---
 
-## 10. Setup Instructions
+## 🚀 Why This Workflow Is Powerful
 
-1. Import the workflow JSON into n8n.
-2. Configure **Gemini API** credentials in the AI Agent node.
-3. Configure **Google OAuth** credentials for YouTube and Drive nodes.
-4. Enable **YouTube Data API v3** in your Google Cloud project.
-5. Test the workflow with a sample input message.
-6. Monitor the polling loop on first run to verify timing.
+- Converts raw ideas into production-grade prompts
+- Enforces cinematic structure automatically
+- Maintains strict output formatting
+- Fully automated publishing pipeline
+- No manual editing required
 
 ---
 
-## 11. Sample Input
+## 🛠 Customization Ideas
+
+- Add thumbnail generation agent
+- Auto-generate YouTube description + tags
+- Multi-language prompt variant generator
+- Batch prompt mode
+- Auto-post to Instagram Reels or TikTok
+- Add analytics feedback loop for prompt refinement
+
+---
+
+## 🎯 Ideal Use Cases
+
+- Faceless YouTube automation
+- Short film prototyping
+- Ad creative testing
+- AI storytelling pipelines
+- Creator economy automation systems
+
+---
+
+## 📦 Final Output Flow
 
 ```
-Create a cinematic sci-fi video of a futuristic city at night with flying cars and neon rain.
+Chat Idea → Structured Prompt → Veo Video → Drive Archive → YouTube Live
 ```
 
----
-
-## 12. Failure Modes
-
-| Issue | Cause |
-|---|---|
-| API quota exceeded | Too many generation requests |
-| Polling interval too short | Status check fires before video is ready |
-| OAuth misconfiguration | Invalid or expired Google credentials |
-| Upload timeouts | Large video file or slow network |
-| Rate limits | Gemini or YouTube API throttling |
-
----
-
-## 13. Scalability Notes
-
-This architecture is modular and production-ready. Planned future upgrades include:
-
-- Description generator agent
-- Thumbnail generator workflow
-- SEO metadata optimizer
-- Logging database
-- Retry + error handler nodes
+Fully automated. Scalable. Agentic.
